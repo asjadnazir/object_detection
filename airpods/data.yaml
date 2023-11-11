@@ -1,0 +1,13 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+nc: 1
+names: ['Airpods']
+
+roboflow:
+  workspace: project-uzwxb
+  project: airpods-7mme5
+  version: 5
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/project-uzwxb/airpods-7mme5/dataset/5

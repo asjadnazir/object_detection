@@ -1,0 +1,20 @@
+
+
+path: /Volumes/Mac OS - Data/Projects/object_detection/airpods
+train: train/images
+val: valid/images
+test: test/images
+#
+#names:
+#  0: airpod
+
+
+nc: 1
+names: ['Airpods']
+
+
+
+
+
+
+
