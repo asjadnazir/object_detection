@@ -4,15 +4,20 @@ path: /Volumes/Mac OS - Data/Projects/object_detection/airpods
 train: train/images
 val: valid/images
 test: test/images
-#
-#names:
-#  0: airpod
-
+batch_size: 8  # Set your desired batch size here
+epochs: 200
+lr0: 0.001
+scheduler: cosine
+augment: True
+#img_size: 416
 
 nc: 1
 names: ['Airpods']
 
 
+
+#names:
+#  0: airpod
 
 
 

@@ -1,0 +1,13 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+nc: 2
+names: ['airpod2', 'airpod3']
+
+roboflow:
+  workspace: yolov5-oi1fm
+  project: detect-airpod
+  version: 2
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/yolov5-oi1fm/detect-airpod/dataset/2

@@ -7,5 +7,10 @@ def train():
     device: str = "mps" if torch.backends.mps.is_available() else "cpu"
     model = YOLO("yolov8n.yaml")
     # model.to(device)
-    results = model.train(data="config.yaml", epochs=10)
+    # results = model.train(data="config.yaml", epochs=10)
+    results = model.train(data="config.yaml")
+    print('////////////////////////////////////////////////////')
+    print(results)
     print('Training End')
+
+

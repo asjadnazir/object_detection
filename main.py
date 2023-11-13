@@ -26,27 +26,27 @@ net.setInputSwapRB(True)
 model_path = os.path.join('.', 'models', 'airpods_detector.pt')
 airpods_detector = YOLO(model_path)
 threshold = 0.5
-class_name_dict = {0: 'airpod'}
+class_name_dict = {0: 'Airpods'}
 
 while True:
     success, frame = cap.read()
 
-    # # yolov8 basic classes
-    # classIds, confs, bbox = net.detect(frame, confThreshold=0.5)
-    # print(classIds, bbox)
-    #
-    # if len(classIds) != 0:
-    #     for classId, confidence, box in zip(classIds, confs.flatten(), bbox):
-    #         cv2.rectangle(frame, box, color=(0, 255, 0), thickness=2)
-    #         cv2.putText(frame, classNames[classId - 1].upper(), (box[0] + 10, box[1] + 30), cv2.FONT_HERSHEY_COMPLEX, 1,
-    #                     (0, 255, 0), 2)
+    # yolov8 basic classes
+    classIds, confs, bbox = net.detect(frame, confThreshold=0.5)
+    print(classIds, bbox)
+
+    if len(classIds) != 0:
+        for classId, confidence, box in zip(classIds, confs.flatten(), bbox):
+            cv2.rectangle(frame, box, color=(0, 255, 0), thickness=2)
+            cv2.putText(frame, classNames[classId - 1].upper(), (box[0] + 10, box[1] + 30), cv2.FONT_HERSHEY_COMPLEX, 1,
+                        (0, 255, 0), 2)
 
     # Airpods
     airpods = airpods_detector(frame)[0]
     for airpod in airpods.boxes.data.tolist():
             x1, y1, x2, y2, score, class_id = airpod
             if True:
-                print('Airpods found' + str(score))
+                print('Airpods found ' + str(class_id) + ' ' + str(score))
                 box = (int(x1), int(y1), int(x2), int(y2))  # Create a box tuple
                 cv2.rectangle(frame, (box[0], box[1]), (box[2], box[3]), color=(0, 50, 255),
                               thickness=2)  # Fix the rectangle coordinates
