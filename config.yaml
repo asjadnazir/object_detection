@@ -4,7 +4,7 @@ path: /Volumes/Mac OS - Data/Projects/object_detection/airpods
 train: train/images
 val: valid/images
 test: test/images
-batch_size: 8  # Set your desired batch size here
+batch_size: 8
 epochs: 200
 lr0: 0.001
 scheduler: cosine

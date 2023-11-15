@@ -37,15 +37,16 @@ while True:
 
     if len(classIds) != 0:
         for classId, confidence, box in zip(classIds, confs.flatten(), bbox):
-            cv2.rectangle(frame, box, color=(0, 255, 0), thickness=2)
-            cv2.putText(frame, classNames[classId - 1].upper(), (box[0] + 10, box[1] + 30), cv2.FONT_HERSHEY_COMPLEX, 1,
-                        (0, 255, 0), 2)
+            if int(classId) != 74:
+                cv2.rectangle(frame, box, color=(0, 255, 0), thickness=2)
+                cv2.putText(frame, classNames[classId - 1].upper(), (box[0] + 10, box[1] + 30), cv2.FONT_HERSHEY_COMPLEX, 1,
+                            (0, 255, 0), 2)
 
     # Airpods
     airpods = airpods_detector(frame)[0]
     for airpod in airpods.boxes.data.tolist():
             x1, y1, x2, y2, score, class_id = airpod
-            if True:
+            if score > 0.3:
                 print('Airpods found ' + str(class_id) + ' ' + str(score))
                 box = (int(x1), int(y1), int(x2), int(y2))  # Create a box tuple
                 cv2.rectangle(frame, (box[0], box[1]), (box[2], box[3]), color=(0, 50, 255),
